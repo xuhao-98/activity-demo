@@ -55,6 +55,7 @@ public class ActivitiDemo {
 
         System.out.println(processInstance.getProcessDefinitionId());
         System.out.println(processInstance.getStartTime());
+        System.out.println(processInstance.getActivityId());
     }
 
     /**
@@ -265,13 +266,14 @@ public class ActivitiDemo {
 //        bpmn文件的流
         InputStream bpmnInput = repositoryService.getResourceAsStream(deploymentId, processDefinition.getResourceName());
 //        6、构造OutputStream流
-        File file_png = new File("d:/myLeave.png");
-        File file_bpmn = new File("d:/myLeave.bpmn");
+        File file_png = new File("c:Users/xuhao/Desktop/myLeave.png");
+        File file_bpmn = new File("c:Users/xuhao/Desktop/myLeave.bpmn");
         FileOutputStream bpmnOut = new FileOutputStream(file_bpmn);
         FileOutputStream pngOut = new FileOutputStream(file_png);
 //        7、输入流，输出流的转换
         IOUtils.copy(pngInput,pngOut);
         IOUtils.copy(bpmnInput,bpmnOut);
+        System.out.println("下载完成");
 //        8、关闭流
         pngOut.close();
         bpmnOut.close();
@@ -291,7 +293,7 @@ public class ActivitiDemo {
 //        获取 actinst表的查询对象
         HistoricActivityInstanceQuery instanceQuery = historyService.createHistoricActivityInstanceQuery();
 //        查询 actinst表，条件：根据 InstanceId 查询，查询一个流程的所有历史信息
-        instanceQuery.processInstanceId("2501");
+//        instanceQuery.processInstanceId("15001");
 //        查询 actinst表，条件：根据 DefinitionId 查询，查询一种流程的所有历史信息
 //        instanceQuery.processDefinitionId("myLeave:1:22504");
 //        增加排序操作,orderByHistoricActivityInstanceStartTime 根据开始时间排序 asc 升序
